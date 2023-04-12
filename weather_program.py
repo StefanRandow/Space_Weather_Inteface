@@ -85,7 +85,7 @@ def main():
         
         #Account for Errors
         if s != 0:
-            print("ERROR EITHER BAD DATA OR NO DATA")
+            print("ERROR EITHER BAD DATA OR NO DATA \nTRY AGAIN IN 1 MINUTE")
         
         #print data
         else:
@@ -127,7 +127,7 @@ def main():
         S, Bx, By, Bz, Bt = get_gsm()
         
         if S != 0:
-            print("ERROR EITHER BAD DATA OR NO DATA")
+            print("ERROR EITHER BAD DATA OR NO DATA \nTRY AGAIN IN 1 MINUTE")
         
         else:
             print("Magnetic Field Strength in the X direction: ", Bx, "nT")
