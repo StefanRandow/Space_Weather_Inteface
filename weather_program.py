@@ -81,7 +81,7 @@ def main():
         s, speed, density, temperature = get_proton()
         
         #Print Information
-        print("\nLatest data on Solar Wind Plasma (Protons) is below \n")
+        print("\nLatest data on Solar Wind Plasma (Protons) at the L1 Lagrange is below \n")
         
         #Account for Errors
         if s != 0:
