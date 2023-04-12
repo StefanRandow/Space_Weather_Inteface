@@ -1,5 +1,5 @@
 import urllib.request
-
+import os
 def get_proton():
     # Set up the URL for the text file
     url = "https://services.swpc.noaa.gov/text/ace-swepam.txt"
@@ -74,7 +74,6 @@ def main():
     if choice == "1":
     
         #clean up screen
-        import os
         os.system('cls' if os.name == 'nt' else 'clear')
         
         #update values
@@ -95,7 +94,6 @@ def main():
         
         #prepare for follow on mission
         input("Press Enter to continue...")
-        import os
         os.system('cls' if os.name == 'nt' else 'clear')
         main()
         
@@ -103,7 +101,6 @@ def main():
     elif choice == "2":
     
         #clean up screen
-        import os
         os.system('cls' if os.name == 'nt' else 'clear')
         
         report = get_report()
@@ -113,14 +110,12 @@ def main():
         
         #prepare for follow on mission
         input("Press Enter to continue...")
-        import os
         os.system('cls' if os.name == 'nt' else 'clear')
         main()
     
     elif choice == "3":
         
         #clean up screen
-        import os
         os.system('cls' if os.name == 'nt' else 'clear')
         
         print("\nLatest Data on Interplanetary Magnetic Field Values (GSM Coordinates): \n")
@@ -137,7 +132,6 @@ def main():
         
         #prepare for follow on mission
         input("Press Enter to continue...")
-        import os
         os.system('cls' if os.name == 'nt' else 'clear')
         main()
         
@@ -145,6 +139,7 @@ def main():
     
     
     else:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print("Please try again")
         main()
     
