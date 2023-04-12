@@ -71,7 +71,7 @@ def main():
     elif choice == "2":
         report = get_report()
         print(report)
-            input("Press Enter to continue...")
+        input("Press Enter to continue...")
         import os
         os.system('cls' if os.name == 'nt' else 'clear')
         main()
