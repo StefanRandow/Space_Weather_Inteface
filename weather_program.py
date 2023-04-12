@@ -16,12 +16,38 @@ def get_proton():
     fields = last_line.split()
 
     # Extract the solar wind speed, density, and temperature from the fields
+    s = float(fields[6])
     density = float(fields[7])
     speed = float(fields[8])
-    temperature = str(fields[9])
+    temperature = (fields[9])
     
     #returning values
-    return speed, density, temperature
+    return s, speed, density, temperature
+    
+def get_gsm():
+    # Set up the URL for the text file
+    url = "https://services.swpc.noaa.gov/text/ace-magnetometer.txt"
+    
+    # Download the text file
+    response = urllib.request.urlopen(url)
+    data = response.read().decode()
+    
+    # Split the text file into lines
+    lines = data.split("\n")
+    
+    # Extract the most recent Interplanetary Magnetic Field data from the second-to-last line
+    last_line = lines[-2]
+    fields = last_line.split()
+    
+    # Extract the Bx, By, Bz, Bt data from the fields
+    S =  float(fields[6])
+    Bx = float(fields[7])
+    By = float(fields[8])
+    Bz = float(fields[9])
+    Bt = float(fields[10])
+    
+    #return all collected values
+    return S, Bx, By, Bz, Bt
    
 def get_report():
     # Set up the URL for the text file
@@ -39,34 +65,33 @@ def main():
     print("Welcome to the Space Weather Inteface, you have the following options:")
     print("1.) 1-Minute Averaged Real-time Bulk Parameters of the Solar Wind Plasma")
     print("2.) Space Weather Prediction Center Forecast Report")
+    print("3.) 1-Minute Averaged Real-time Interplanetary Magnetic Field Values")
     
     #Get User Choice
     choice = input("Enter a number corresponding to an option above: ")
     
     #printing values
     if choice == "1":
-        speed, density, temperature = get_proton()
+    
+        #clean up screen
+        import os
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        #update values
+        s, speed, density, temperature = get_proton()
         
         #Print Information
         print("\nLatest data on Solar Wind Plasma (Protons) is below \n")
         
-        
-        
         #Account for Errors
-        if speed == -9999.9:
-            print("ERROR")
+        if s != 0:
+            print("ERROR EITHER BAD DATA OR NO DATA")
+        
+        #print data
         else:
             print("Speed: ", speed, "km/s")
-            
-        if density == -9999.9:
-            print("ERROR")
-        else:
-            print("Density:", density, "protons/cm^3")
-            
-        if temperature == "-1.00e+05":
-            print("ERROR")
-        else:
-            print("Temperature:", temperature, "K \n")
+            print("Density: ", density, "protons/cm^3")
+            print("Temperature: ", temperature, "K")
         
         #prepare for follow on mission
         input("Press Enter to continue...")
@@ -76,8 +101,39 @@ def main():
         
         
     elif choice == "2":
+    
+        #clean up screen
+        import os
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
         report = get_report()
+        print("\n")
         print(report)
+        print("\n")
+        
+        #prepare for follow on mission
+        input("Press Enter to continue...")
+        import os
+        os.system('cls' if os.name == 'nt' else 'clear')
+        main()
+    
+    elif choice == "3":
+        
+        #clean up screen
+        import os
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        print("\nLatest Data on Interplanetary Magnetic Field Values (GSM Coordinates): \n")
+        S, Bx, By, Bz, Bt = get_gsm()
+        
+        if S != 0:
+            print("ERROR EITHER BAD DATA OR NO DATA")
+        
+        else:
+            print("Magnetic Field Strength in the X direction: ", Bx, "nT")
+            print("Magnetic Field Strength in the Y direction: ", By, "nT")
+            print("Magnetic Field Strength in the Z direction: ", Bz, "nT")
+            print("Total Magnetic Field Magnitude: ", Bt, "nT \n")
         
         #prepare for follow on mission
         input("Press Enter to continue...")
@@ -85,6 +141,9 @@ def main():
         os.system('cls' if os.name == 'nt' else 'clear')
         main()
         
+    
+    
+    
     else:
         print("Please try again")
         main()
