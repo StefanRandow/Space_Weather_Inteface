@@ -62,14 +62,25 @@ def main():
         else:
             print("Temperature:", temperature, "K")
         
+        input("Press Enter to continue...")
+        import os
+        os.system('cls' if os.name == 'nt' else 'clear')
+        main()
+        
         
     elif choice == "2":
         report = get_report()
         print(report)
+            input("Press Enter to continue...")
+        import os
+        os.system('cls' if os.name == 'nt' else 'clear')
+        main()
         
     else:
         print("Please try again")
         main()
+    
+
     
 
 main()
