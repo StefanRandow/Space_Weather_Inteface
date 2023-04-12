@@ -62,7 +62,9 @@ def get_report():
 def main():
 
     #Present Options
-    print("Welcome to the Space Weather Inteface, you have the following options:")
+    print("Welcome to the Interplanetary Space Weather Inteface, \n
+    This data is collected by the Advanced Composition Explorer (ACE). \n
+    You have the following options:")
     print("1.) 1-Minute Averaged Real-time Bulk Parameters of the Solar Wind Plasma")
     print("2.) Space Weather Prediction Center Forecast Report")
     print("3.) 1-Minute Averaged Real-time Interplanetary Magnetic Field Values")
