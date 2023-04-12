@@ -47,6 +47,12 @@ def main():
     if choice == "1":
         speed, density, temperature = get_proton()
         
+        #Print Information
+        print("\nLatest data on Solar Wind Plasma (Protons) is below \n")
+        
+        
+        
+        #Account for Errors
         if speed == -9999.9:
             print("ERROR")
         else:
@@ -60,8 +66,9 @@ def main():
         if temperature == "-1.00e+05":
             print("ERROR")
         else:
-            print("Temperature:", temperature, "K")
+            print("Temperature:", temperature, "K \n")
         
+        #prepare for follow on mission
         input("Press Enter to continue...")
         import os
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -71,6 +78,8 @@ def main():
     elif choice == "2":
         report = get_report()
         print(report)
+        
+        #prepare for follow on mission
         input("Press Enter to continue...")
         import os
         os.system('cls' if os.name == 'nt' else 'clear')
