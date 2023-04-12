@@ -21,12 +21,6 @@ def get_proton():
     temperature = str(fields[9])
     
     #returning values
-    if density == ("-9999.9"):
-       density = "ERROR"
-    elif speed == ("-9999.9"):
-        speed = "ERROR"
-    elif temperature == ("-1.00e+05"):
-        temperature = "ERROR"
     return speed, density, temperature
    
 def get_report():
@@ -52,9 +46,21 @@ def main():
     #printing values
     if choice == "1":
         speed, density, temperature = get_proton()
-        print("Speed: ", speed, "km/s")
-        print("Density:", density, "protons/cm^3")
-        print("Temperature:", temperature, "K")
+        
+        if speed == -9999.9:
+            print("ERROR")
+        else:
+            print("Speed: ", speed, "km/s")
+            
+        if density == -9999.9:
+            print("ERROR")
+        else:
+            print("Density:", density, "protons/cm^3")
+            
+        if temperature == "-1.00e+05":
+            print("ERROR")
+        else:
+            print("Temperature:", temperature, "K")
         
         
     elif choice == "2":
