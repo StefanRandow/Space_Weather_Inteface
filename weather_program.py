@@ -63,15 +63,32 @@ def main():
 
     #Present Options
     print("Welcome to the Interplanetary Space Weather Inteface, \nThis data is collected by the Advanced Composition Explorer (ACE). \n\nYou have the following options: \n")
-    print("1.) 1-Minute Averaged Real-time Interplanetary Solar Wind Plasma Data")
-    print("2.) Space Weather Prediction Center Forecast Report")
+    print("1.) Space Weather Prediction Center Forecast Report")
+    print("2.) 1-Minute Averaged Real-time Interplanetary Solar Wind Plasma Data")
     print("3.) 1-Minute Averaged Real-time Interplanetary Magnetic Field Data")
+    print("4.) Download Today's 304 Angstrom Images from NASA Solar Dynamics Observatory")
     
     #Get User Choice
     choice = input("Enter a number corresponding to an option above: ")
     
     #printing values
+    
     if choice == "1":
+    
+        #clean up screen
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        report = get_report()
+        print("\n")
+        print(report)
+        print("\n")
+        
+        #prepare for follow on mission
+        input("Press Enter to continue...")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        main()
+    
+    elif choice == "2":
     
         #clean up screen
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -97,21 +114,6 @@ def main():
         os.system('cls' if os.name == 'nt' else 'clear')
         main()
         
-        
-    elif choice == "2":
-    
-        #clean up screen
-        os.system('cls' if os.name == 'nt' else 'clear')
-        
-        report = get_report()
-        print("\n")
-        print(report)
-        print("\n")
-        
-        #prepare for follow on mission
-        input("Press Enter to continue...")
-        os.system('cls' if os.name == 'nt' else 'clear')
-        main()
     
     elif choice == "3":
         
@@ -135,7 +137,11 @@ def main():
         os.system('cls' if os.name == 'nt' else 'clear')
         main()
         
-    
+    elif choice == "4":
+        
+        #clean up screen
+        os.system('cls' if os.name == 'nt' else 'clear')
+        os.system(r"get_images.bat")
     
     
     else:
