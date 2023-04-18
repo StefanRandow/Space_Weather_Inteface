@@ -23,7 +23,7 @@ with urllib.request.urlopen(url) as response:
     pattern = re.compile(r'href="(.*?\.jpg)"')
     for match in pattern.finditer(html):
         filename = match.group(1)
-        if "0304" in filename and "4096" in filename:
+        if "0193" in filename and "4096" in filename and not "pfss" in filename:
             image_url = url + filename
             urllib.request.urlretrieve(image_url, download_directory + filename)
             print(f"Downloaded {filename}")

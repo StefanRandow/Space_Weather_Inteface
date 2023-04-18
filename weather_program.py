@@ -142,6 +142,17 @@ def main():
         #clean up screen
         os.system('cls' if os.name == 'nt' else 'clear')
         os.system(r"get_images.bat")
+        
+        print("You have successfully downloaded the images, would you like to generate an AVI from them?")
+        movie = input("Enter \"y\" for Yes and \"n\" for No:  ")
+        if movie == "y":
+            print("The movie is now being generated. Please be Patient \n")
+            os.system(r"make_movie.bat")
+            main()
+            
+        elif movie == "n":
+            os.system('cls' if os.name == 'nt' else 'clear')
+            main()
     
     
     else:
