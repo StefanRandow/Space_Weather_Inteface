@@ -1,6 +1,8 @@
 import urllib.request
 import os
 import re
+
+#on some computers there seems to be an error with SSL handling, this should ensure secure connections over SSL
 import ssl; ssl._create_default_https_context = ssl._create_stdlib_context
 
 # get current date
