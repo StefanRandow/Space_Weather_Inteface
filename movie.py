@@ -26,7 +26,7 @@ height, width, channels = frames[0].shape
 
 # create a VideoWriter object to write the output video
 fourcc = cv2.VideoWriter_fourcc(*'XVID')  # use XVID codec for AVI format
-out = cv2.VideoWriter('output.avi', fourcc, 10.0, (width, height), isColor=True)
+out = cv2.VideoWriter('output.avi', fourcc, 24.0, (width, height), isColor=True)
 
 # write each frame to the output video
 for frame in frames:
