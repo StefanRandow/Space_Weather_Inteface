@@ -45,4 +45,7 @@ del create_shortcut.vbs
 
 echo VBScript file executed and deleted.
 
+cd ..
+del setup.bat
+
 pause
