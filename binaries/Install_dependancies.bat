@@ -1,7 +1,7 @@
 @echo off
 
 echo This program will install all dependencies that you need.
-echo The following dependencies are needed: Pip, Pillow and OpenCV.
+echo The following dependencies are needed: Pip, and OpenCV.
 
 REM Install pip
 python -m ensurepip --default-pip
