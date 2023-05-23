@@ -170,6 +170,7 @@ def main():
         if movie == "y":
             print("The movie is now being generated. Please be Patient \n")
             os.system(r"cd ..\binaries && soho_make_movie.bat")
+            os.system('cls' if os.name == 'nt' else 'clear')
             main()
             
         elif movie == "n":
