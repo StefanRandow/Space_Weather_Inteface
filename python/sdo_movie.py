@@ -1,8 +1,9 @@
 import cv2
 import os
+import shutil
 
 # get the path to the images folder relative to the script's directory
-folder_path = os.path.join(os.path.dirname(__file__), 'images')
+folder_path = "../images/sdo/"
 
 # get a list of all the files in the folder
 files = os.listdir(folder_path)
@@ -26,7 +27,7 @@ height, width, channels = frames[0].shape
 
 # create a VideoWriter object to write the output video
 fourcc = cv2.VideoWriter_fourcc(*'XVID')  # use XVID codec for AVI format
-out = cv2.VideoWriter('output.avi', fourcc, 24.0, (width, height), isColor=True)
+out = cv2.VideoWriter('sdo.avi', fourcc, 24.0, (width, height), isColor=True)
 
 # write each frame to the output video
 for frame in frames:
@@ -35,3 +36,13 @@ for frame in frames:
 # release the VideoWriter object and close all windows
 out.release()
 cv2.destroyAllWindows()
+
+# Set the original output file path
+original_path = 'sdo.avi'
+
+# Set the new output file path
+new_path = '../images/sdo.avi'
+
+# Move the file to the new location
+shutil.move(original_path, new_path)
+

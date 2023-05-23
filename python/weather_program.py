@@ -66,7 +66,8 @@ def main():
     print("1.) Space Weather Prediction Center Forecast Report")
     print("2.) 1-Minute Averaged Real-time Interplanetary Solar Wind Plasma Data")
     print("3.) 1-Minute Averaged Real-time Interplanetary Magnetic Field Data")
-    print("4.) Download Today's 304 Angstrom Images from NASA Solar Dynamics Observatory")
+    print("4.) Download Today's 193 Angstrom Images from NASA Solar Dynamics Observatory")
+    print("5.) Donwload Today's SOHO Coronograph Imagery")
     
     #Get User Choice
     choice = input("Enter a number corresponding to an option above: ")
@@ -141,13 +142,35 @@ def main():
         
         #clean up screen
         os.system('cls' if os.name == 'nt' else 'clear')
-        os.system(r"get_images.bat")
+        
+        #call the sdo image getter
+        os.system(r"cd ..\binaries && get_sdo_images.bat")
         
         print("You have successfully downloaded the images, would you like to generate an AVI from them?")
         movie = input("Enter \"y\" for Yes and \"n\" for No:  ")
         if movie == "y":
             print("The movie is now being generated. Please be Patient \n")
-            os.system(r"make_movie.bat")
+            os.system(r"cd ..\binaries && sdo_make_movie.bat")
+            main()
+            
+        elif movie == "n":
+            os.system('cls' if os.name == 'nt' else 'clear')
+            main()
+            
+    elif choice == "5":
+        
+        #clean up screen
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        #call the SOHO image gettter
+        os.system(r"cd ..\binaries && get_soho_images.bat")
+        
+        print("You have successfully downloaded the images, would you like to generate an AVI from them?")
+        movie = input("Enter \"y\" for Yes and \"n\" for No:  ")
+        if movie == "y":
+            print("The movie is now being generated. Please be Patient \n")
+            os.system(r"cd ..\binaries && soho_make_movie.bat")
+            os.system('cls' if os.name == 'nt' else 'clear')
             main()
             
         elif movie == "n":
