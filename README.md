@@ -1,7 +1,7 @@
-# Space_Weather_Interface
+This is the Official PyPi Version of Space Weather Interface
+This is the development-repo, if you want to install this version just use the following command:
 
-Please run, "SETUP.bat" before using this program.
-It will install pip and OpenCV which are neccesary for creating video from downloaded images.
+pip install Space_Weather_Interface_P
 
-This program is intended for ametuer astronomers and space weather enthusiasts. It pulls from 3 different NASA satelite data sources, 
-the Solar and Heliospheric Observatory (SOHO), the Advanced Composition Explorer (ACE) and the Solar Dynamics Observatory (SDO).
+If you want a portable Windows version, please see the branches list and go to Space_Weather_Interface-windows
+https://github.com/StefanRandow/Space_Weather_Interface/tree/windows
