@@ -264,7 +264,7 @@ def main():
         window.configure(bg = 'SystemButtonFace')
         report_section.configure(bg = 'SystemWindow')
         report_section.configure(fg = '#000000')
-        fetch_Report.configure(bg = 'SystemWindow')
+        fetch_Report.configure(bg = '#SystemWindow')
         fetch_Report.configure(fg = '#000000')
 
     def fill_Report():
