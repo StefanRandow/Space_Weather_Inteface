@@ -263,13 +263,15 @@ def main():
     #this function contains our main window
     # lets add some functions to the window
     def dark_Mode():
-        window.configure(bg = '#14171f')
+        window.configure(bg = '#171a21')
         report_section.configure(bg = '#2c313d')
         report_section.configure(fg = '#b3b3b3')
         fetch_Report.configure(bg = '#2c313d')
         fetch_Report.configure(fg = '#b3b3b3')
         fetch_Report3.configure(bg = '#2c313d')
         fetch_Report3.configure(fg = '#b3b3b3')
+        subtitle.configure(bg = '#171a21')
+        subtitle.configure(fg = '#b3b3b3')
         
     def light_Mode():
         window.configure(bg = 'SystemButtonFace')
@@ -279,6 +281,8 @@ def main():
         fetch_Report.configure(fg = '#000000')
         fetch_Report3.configure(bg = 'SystemWindow')
         fetch_Report3.configure(fg = '#000000')
+        subtitle.configure(bg = 'SystemButtonFace')
+        subtitle.configure(fg = '#000000')
 
     def fill_Report():
         content = get_report()
@@ -323,7 +327,7 @@ def main():
     report_section = tk.Text(window, state='disabled', width = 80, height = 20)
     report_section.grid(row=0, column=0, sticky='nsew', padx=10, pady=10)
     report_section.configure(state = 'normal')
-    report_section.insert(tk.END, "Welcome to the Space Weather Interface . . .")
+    report_section.insert(tk.END, "Welcome to the Space Weather Interface . . . ")
     report_section.configure(state = 'disabled')
 
     # okay fire! now lets make a button that pulls the report
@@ -341,6 +345,10 @@ def main():
     # now we set up a label to display the image
     image_label = tk.Label(window, image=photo, borderwidth=0)
     image_label.grid(row=0, column=1, padx=10, pady=10)
+    
+    # lastly we need to explain the image, we'll do it with a subtitle label
+    subtitle = tk.Label(window, text="Latest Solar Magnetogram from the Helioseismic and Magnetic Imager (HMI)")
+    subtitle.grid(row=1, column=1)
     
 
 
