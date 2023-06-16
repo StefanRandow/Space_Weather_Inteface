@@ -25,6 +25,15 @@ def get_report():
     response = urllib.request.urlopen(url)
     report = response.read().decode()
     return report
+
+def get_report3():
+    # set up the URL for the text file
+    url = "https://services.swpc.noaa.gov/text/3-day-solar-geomag-predictions.txt"
+    
+    # download the text file
+    response = urllib.request.urlopen(url)
+    report3 = response.read().decode()
+    return report3
     
 def get_sdo_Sun():
     # set up our variables, lists, etc.
@@ -259,6 +268,8 @@ def main():
         report_section.configure(fg = '#b3b3b3')
         fetch_Report.configure(bg = '#2c313d')
         fetch_Report.configure(fg = '#b3b3b3')
+        fetch_Report3.configure(bg = '#2c313d')
+        fetch_Report3.configure(fg = '#b3b3b3')
         
     def light_Mode():
         window.configure(bg = 'SystemButtonFace')
@@ -266,11 +277,20 @@ def main():
         report_section.configure(fg = '#000000')
         fetch_Report.configure(bg = 'SystemWindow')
         fetch_Report.configure(fg = '#000000')
+        fetch_Report3.configure(bg = 'SystemWindow')
+        fetch_Report3.configure(fg = '#000000')
 
     def fill_Report():
-        report_section.delete("1.0", tk.END) # this will clear the content
         content = get_report()
         report_section.configure(state = 'normal')
+        report_section.delete("1.0", tk.END) # this will clear the content
+        report_section.insert(tk.END, content)
+        report_section.configure(state = 'disabled')
+        
+    def fill_Report3():
+        content = get_report3()
+        report_section.configure(state = 'normal')
+        report_section.delete("1.0", tk.END) # this will clear the content
         report_section.insert(tk.END, content)
         report_section.configure(state = 'disabled')
     
@@ -302,10 +322,27 @@ def main():
     # okay now lets make my text box
     report_section = tk.Text(window, state='disabled', width = 80, height = 20)
     report_section.grid(row=0, column=0, sticky='nsew', padx=10, pady=10)
+    report_section.configure(state = 'normal')
+    report_section.insert(tk.END, "Welcome to the Space Weather Interface . . .")
+    report_section.configure(state = 'disabled')
 
     # okay fire! now lets make a button that pulls the report
-    fetch_Report = tk.Button(window, text='Daily Forecast Report', command = fill_Report)
-    fetch_Report.grid(row=2, column=0)
+    fetch_Report = tk.Button(window, text='Daily Forecast Report', command=fill_Report)
+    fetch_Report.grid(row=1, column=0)
+
+    fetch_Report3 = tk.Button(window, text='3 Day Forecast Report', command=fill_Report3)
+    fetch_Report3.grid(row=2, column=0)
+    
+    #now lets set up a frame to display an image
+    urllib.request.urlretrieve("https://sdo.gsfc.nasa.gov/assets/img/latest/latest_512_HMIB.jpg", "../images/latest/latest.jpg") # gets the latest image
+    image = Image.open("../images/latest/latest.jpg") # prepares the image for tkinter
+    photo = ImageTk.PhotoImage(image)
+    
+    # now we set up a label to display the image
+    image_label = tk.Label(window, image=photo, borderwidth=0)
+    image_label.grid(row=0, column=1, padx=10, pady=10)
+    
+
 
     window.mainloop()
     
