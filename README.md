@@ -1,5 +1,5 @@
 # Space_Weather_Interface
-## YOU CAN ALSO USE pip install space_weather_interface_P
+## YOU CAN ALSO INSTALL VIA:: pip install space_weather_interface_P
 
 Please run, "SETUP.py" before using this program.
 It will install pip and OpenCV which are neccesary for creating video from downloaded images.
