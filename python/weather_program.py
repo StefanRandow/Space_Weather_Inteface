@@ -61,13 +61,16 @@ def get_report():
 
 def main():
 
+    #clear screen to be safe
+    os.system('cls' if os.name == 'nt' else 'clear')
     #Present Options
     print("Welcome to the Interplanetary Space Weather Interface, \nThis data is collected by the Advanced Composition Explorer (ACE). \n\nYou have the following options: \n")
     print("1.) Space Weather Prediction Center Forecast Report")
     print("2.) 1-Minute Averaged Real-time Interplanetary Solar Wind Plasma Data")
     print("3.) 1-Minute Averaged Real-time Interplanetary Magnetic Field Data")
-    print("4.) Download Today's 193 Angstrom Images from NASA Solar Dynamics Observatory")
+    print("4.) Query and Download Images from Solar Dynamics Observatory")
     print("5.) Donwload Today's SOHO Coronograph Imagery")
+    print("6.) Compile Imagery To AVI")
     
     #Get User Choice
     choice = input("Enter a number corresponding to an option above: ")
@@ -144,18 +147,10 @@ def main():
         os.system('cls' if os.name == 'nt' else 'clear')
         
         #call the sdo image getter
-        os.system(r"cd ..\binaries && get_sdo_images.bat")
+        os.system(r"cd ..\binaries && sdo_image_searcher.bat")
         
-        print("You have successfully downloaded the images, would you like to generate an AVI from them?")
-        movie = input("Enter \"y\" for Yes and \"n\" for No:  ")
-        if movie == "y":
-            print("The movie is now being generated. Please be Patient \n")
-            os.system(r"cd ..\binaries && sdo_make_movie.bat")
-            main()
-            
-        elif movie == "n":
-            os.system('cls' if os.name == 'nt' else 'clear')
-            main()
+        print("You have successfully downloaded the images, you may now continue.")
+        main()
             
     elif choice == "5":
         
@@ -176,6 +171,16 @@ def main():
         elif movie == "n":
             os.system('cls' if os.name == 'nt' else 'clear')
             main()
+            
+    elif choice == "6":
+        
+        #clean up screen
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        #call the SOHO image gettter
+        os.system(r"cd ..\binaries && sdo_movie.bat")
+        main()
+        
     
     
     else:

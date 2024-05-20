@@ -14,9 +14,10 @@ today = date.today()
 # day = today.strftime("%d")
 mlist = [4, 6, 9, 11]
 
+os.system('cls' if os.name == 'nt' else 'clear')
 print("Welcome to the SDO query function.")
 print("You will now be prompted to select a date to query.")
-print("Please enter a year from the range: 2010 -",today.strftime("%m"))
+print("Please enter a year from the range: 2010 -",today.strftime("%Y"))
 year = int(input("Year: "))
 
 print("Please enter a month from the range: 1 - 12")
@@ -55,7 +56,8 @@ wavelength = int(input("Wavelength: "))
 print("You will now be prompted to select a resolution to query.")
 print("Please select from the available resolutions: \n512, 1024, 2048, 4096")
 resolution = int(input("Resolution: "))
-
+input("Press Enter to continue...")
+os.system('cls' if os.name == 'nt' else 'clear')
 # okay we are done with all the user input stuff, now we can actually execute.
 
 
